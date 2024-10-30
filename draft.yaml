@@ -1,0 +1,54 @@
+models:
+  User:
+    nip: string:6
+    nama: string:100
+    email: string:100
+    password: string:150
+    tanggal_lahir: date
+    photo: text nullable
+    jabatan: enum:Manager,CEO,"IT Support"
+    level: enum:admin,karyawan
+  Absen:
+    lat: decimal:8,6 nullable
+    long: decimal:9,6 nullable
+    lokasi: text nullable
+    jam_datang: time nullable
+    jam_pulang: time nullable
+    tanggal_absen: date
+    kategori: enum:Terlambat,"Tepat Waktu",Izin,Cuti
+    status: enum:Hadir,"Tidak Hadir"
+    user_id: foreign
+  Suratizin:
+    keterangan: text
+    keterangan_admin: text nullable
+    file_izin: text
+    tanggal_izin: date
+    status: enum:Pending,Terima,Tolak
+    user_id: foreign
+  Suratcuti:
+    keterangan: text
+    keterangan_admin: text nullable
+    tanggal_awal: date
+    tanggal_akhir: date
+    status: enum:Pending,Terima,Tolak
+    user_id: foreign
+  Setting:
+    jam_masuk: time
+    max_jam_masuk: time
+    jam_keluar: time
+    lat: decimal:8,6
+    long: decimal:9,6
+    radius: integer
+
+controllers:
+  User: 
+    resource: web
+  Absen: 
+    resource: index
+  Suratizin: 
+    resource: index, show, update
+  Suratcuti: 
+    resource: index, show, update
+  Setting: 
+    resource: index, update
+

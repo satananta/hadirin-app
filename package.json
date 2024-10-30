@@ -1,0 +1,23 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "concurrently \"npm run dev\" \"php artisan serve\"",
+        "servelanwin": "concurrently \"npm run dev -- --host\" \"php artisan serve --host=%npm_config_host\"",
+        "servelanmac": "concurrently \"npm run dev -- --host\" \"php artisan serve --host=$npm_config_host\"",
+        "migrate": "concurrently \"php artisan migrate:refresh --seed\"",
+        "clear": "concurrently \"php artisan cache:clear\" \"php artisan route:clear\" \"php artisan config:clear\" \"php artisan view:clear\" \"php artisan debugbar:clear\""
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.7",
+        "autoprefixer": "^10.4.16",
+        "axios": "^1.1.2",
+        "concurrently": "^8.2.2",
+        "laravel-vite-plugin": "^0.7.2",
+        "lodash": "^4.17.19",
+        "postcss": "^8.4.32",
+        "tailwindcss": "^3.3.7",
+        "vite": "^4.0.0"
+    }
+}
